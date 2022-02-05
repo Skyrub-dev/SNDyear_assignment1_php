@@ -37,9 +37,23 @@
             <a href="#faq" class="nav-link">F.A.Q</a>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
-              Book an appointment
-            </button>
+          <?php
+          if (isset($_SESSION["username"]))
+          {
+            /*Grabs the username of the user and displays it on the site*/
+            echo "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#loggedin'>
+            Book an appointment
+            </button>";
+            echo "<li> <a href='includes/logout.inc.php'>Logout</a></li>";
+          }
+          else
+          {
+            echo "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModalToggle'>
+            Book an appointment
+            </button>";
+          }
+        ?>
+            
             <!--<a href="#instructors" class="nav-link">Book an appointment</a>-->
           </li>
           
@@ -72,8 +86,20 @@
     <div class="container">
       <div class="d-sm-flex align-items-center justify-content-between">
         <div>
-          <h1>Here to help!
-          </span></h1>
+        <?php
+          if (isset($_SESSION["username"]))
+          {
+            /*Grabs the username of the user and displays it on the site*/
+            echo "<h1>We're here to help, " . $_SESSION["username"] . "!</span></h1>";
+            
+          }
+          else
+          {
+            echo "<h1>Here to help!
+            </span></h1>";
+          }
+        ?>
+          
         </div>
       </div>
     </div>
@@ -348,6 +374,36 @@ if (isset($_GET["error"]))
         <!--NEED TO INCLUDE INPUT VALIDATION HERE: https://www.the-art-of-web.com/javascript/ajax-validate/-->
         input fields here, followed by post to seperate table in mysql
         <form action="#">
+          <label for="fname">First name:</label>
+          <input type="text" id="fname" name="fname"><br><br>
+          <label for="lname">Last name:</label>
+          <input type="text" id="lname" name="lname"><br><br>
+          <label for="dob">DOB:</label>
+          <input type="date" id="dob" name="dob"><br><br>
+          <label for="descrip">Description of problem:</label>
+          <input type="text" id="descrip" name="descrip"><br><br>
+          <!--<input type="submit" value="Submit">-->
+        </form> 
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" data-bs-dismiss="modal">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="loggedin" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Please enter some information about yourself...</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!--NEED TO INCLUDE INPUT VALIDATION HERE: https://www.the-art-of-web.com/javascript/ajax-validate/-->
+        input fields here, followed by post to seperate table in mysql
+        <form action="#">
+          <!--Should use $_SESSION GET-->
           <label for="fname">First name:</label>
           <input type="text" id="fname" name="fname"><br><br>
           <label for="lname">Last name:</label>
