@@ -91,11 +91,11 @@ function uidExists($connection, $username)
 
 }
 /*Function responsible for creating the user */
-function createUser($connection, $username, $pass)
+function createUser($connection, $username, $pass, $firstname, $lastname, $dob, $email)
 {
     /*Again, using a prepared statement, when the data is entered it will
     insert those values into the username and password fields in the database */
-    $sql = "INSERT INTO login (username, password) VALUES (?, ?);";
+    $sql = "INSERT INTO login (username, password, firstname, lastname, dob, email) VALUES (?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($connection);
     if (!mysqli_stmt_prepare($stmt, $sql))
     {
@@ -107,7 +107,7 @@ function createUser($connection, $username, $pass)
     pass an error=none URL */
     $hashedpass = password_hash($pass, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "ss", $username, $hashedpass);
+    mysqli_stmt_bind_param($stmt, "ssssss", $username, $hashedpass, $firstname, $lastname, $dob, $email);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../index.php?error=none");

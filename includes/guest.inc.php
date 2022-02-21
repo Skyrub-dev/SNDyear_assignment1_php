@@ -1,20 +1,23 @@
 <?php
 
+//Responsible for passing temporary guest bookings
+
 if (isset($_POST["submit"])) {
     
     /*Initialising global variables*/
-    $username = $_POST["uid"];
-    $pass = $_POST["pass"];
-    $passrepeat = $_POST["passrepeat"];
+    $gno = $_POST["guestno"];
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
     $dob = $_POST["dob"];
     $email = $_POST["email"];
+    $desc = $_POST["description"]
     /*Using 'connect.inc.php' to actually connect to the database first, then
     using 'functions.inc.php' to grab the functions which have been set on the
     error handlers below */
     require_once 'connect.inc.php';
     require_once 'functions.inc.php';
+
+    //NEED TO CHANGE THESE
 
     /*ERROR HANDLERS*/
 

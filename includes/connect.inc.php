@@ -12,7 +12,7 @@ of the functions to connect to the database -->
 <body>
 
 <?php
-$connection = mysqli_connect("localhost", "root", "", "musicstream");
+$connection = mysqli_connect("localhost", "root", "", "doctorsdb");
 
 if (mysqli_connect_errno())
 {

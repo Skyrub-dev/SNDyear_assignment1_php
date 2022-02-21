@@ -9,6 +9,18 @@ CREATE TABLE login (
     hashedpass VARCHAR(128) NOT NULL
 );
 
+//REAJUSTED AS THIS
+
+CREATE TABLE login (
+	uid int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    username TEXT NOT NULL,
+    password VARCHAR(128) NOT NULL,
+    firstname TEXT NOT NULL,
+    lastname TEXT NOT NULL,
+    dob DATE NOT NULL,
+    email TEXT NOT NULL
+);
+
 //CREATION OF BOOKING GUEST SYSTEM:
 
 CREATE TABLE guestbook (
