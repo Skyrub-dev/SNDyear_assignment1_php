@@ -105,6 +105,8 @@ function createUser($connection, $username, $pass, $firstname, $lastname, $dob, 
     /*To ensure our system is more secure, I have ustilised password hashing,
     by using a prepared statement, once executed will store those details and
     pass an error=none URL */
+
+    /*MUST USE BCRYPT - /no md5 / sha256 */
     $hashedpass = password_hash($pass, PASSWORD_DEFAULT);
 
     mysqli_stmt_bind_param($stmt, "ssssss", $username, $hashedpass, $firstname, $lastname, $dob, $email);
