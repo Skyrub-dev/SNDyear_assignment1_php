@@ -21,6 +21,13 @@ if (isset($_POST["submit"]))
         header("location: ../index.php?error=emptyinput");
         exit();
     }
+
+    if ($username == "Admin")
+    {
+        header("location: ../admin.php");
+        exit();
+    }
+
     /*If the login is successful, the program initialises this function which
     is represented in 'functions.inc.php' */
     loginUser($connection, $username, $pass);

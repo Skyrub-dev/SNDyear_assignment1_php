@@ -53,9 +53,11 @@
           else
           {
             echo "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModalToggle'>
-            Book an appointment
+            Book an appointment / Login
             </button>";
           }
+          /*https://stackoverflow.com/questions/18348168/mysql-check-account-type-to-see-if-admin-on-login*/
+          
         ?>
             
             <!--<a href="#instructors" class="nav-link">Book an appointment</a>-->
@@ -901,7 +903,10 @@ if (isset($_GET["error"]))
 ?>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle4" data-bs-toggle="modal" data-bs-dismiss="modal">Book</button>
+      <!--Should probably remove for security-->
+      <!--<button onClick="location.href='test.php'" class="btn btn-primary" data-bs-dismiss="modal">Admin?</button>-->
+      <!--<button class="btn btn-primary" data-bs-target="#doclogin" data-bs-toggle="modal" data-bs-dismiss="modal">Book</button>-->
+      <p><em>Remember you can always visit us to book at: Furness College, Barrow-in-Furness</em></p>
       </div>
     </div>
   </div>
@@ -1024,14 +1029,15 @@ if (isset($_GET["error"]))
 
             if($link === false){
               die("ERROR: Could not connect. " . mysqli_connect_error());
-              }
-
-            if (isset($_SESSION['username']))
-            {
-              echo "<form action='#'>";
-              echo "<label for='fname'>Firstname:</label>";
-              echo "<p>" .  $_GET['firstname'] . "</p>";
             }
+            
+            //$sql = "SELECT firstname FROM login WHERE username = $username";
+            //$user = mysqli_fetch_assoc($resultss);
+
+              echo "<form action='#'>";
+              echo "<label for='fname'>Firstname:" . $_SESSION['firstname'] . "</label>";
+              //echo "<p>" .  $_GET['firstname'] . "</p>";
+            
             
 
           ?>
@@ -1064,6 +1070,8 @@ if (isset($_GET["error"]))
       </div>
       <div class="modal-body">
         Insert calendar here, needs to be interactive and pass the contents of the date and time to a post method to be uploaded to the data base, take a look at doing it in Javascript: https://mindfusion.eu/blog/interactive-calendar-with-events-in-javascript/
+        <label for="dob">Date:</label>
+        <input type="date" id="dob" name="dob"><br><br>
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary" data-bs-target="#exampleModalToggle4" data-bs-toggle="modal" data-bs-dismiss="modal">Book</button>

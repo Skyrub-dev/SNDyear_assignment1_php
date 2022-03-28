@@ -3,14 +3,13 @@
 if (isset($_POST["submit"])) {
     
     /*Initialising global variables*/
+    $title = $_POST["title"];
+    $lastname = $_POST["lastname"];
+    $firstname = $_POST["firstname"];
     $username = $_POST["uid"];
     $pass = $_POST["pass"];
     $passrepeat = $_POST["passrepeat"];
-    $firstname = $_POST["firstname"];
-    $lastname = $_POST["lastname"];
-    $dob = $_POST["dob"];
-    $email = $_POST["email"];
-    $priv = $_POST["priv"];
+
     /*Using 'connect.inc.php' to actually connect to the database first, then
     using 'functions.inc.php' to grab the functions which have been set on the
     error handlers below */
@@ -21,7 +20,7 @@ if (isset($_POST["submit"])) {
 
     /*Error for if the input fields have not been answered - will change the URL to
     correspond*/
-    if (emptyInputSignup($username, $pass, $passrepeat, $firstname, $lastname, $dob, $email, $priv) !== false)
+    if (emptyInputSignup($title, $lastname, $firstname, $username, $pass, $passrepeat) !== false)
     {
         header("location: ../signup.php?error=emptyinput");
         exit();
@@ -47,7 +46,7 @@ if (isset($_POST["submit"])) {
     }
     /*Initialises the 'createuser' function, passes the $connection, $username and $pass
     variables to the function */
-    createUser($connection, $username, $pass, $firstname, $lastname, $dob, $email, $priv);
+    createDoctor($connection, $title, $lastname, $firstname, $username, $pass, $passrepeat);
 
 }
 /*if result does not match these handlers, will redirect to the signup page */

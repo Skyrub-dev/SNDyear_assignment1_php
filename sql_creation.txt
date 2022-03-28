@@ -30,3 +30,19 @@ CREATE TABLE guestbook (
     email TEXT NOT NULL,
     description TEXT NOT NULL
 );
+
+CREATE TABLE adminlog (
+    uid int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    username TEXT NOT NULL,
+    password VARCHAR(128) NOT NULL,
+    passcode VARCHAR(128) NOT NULL
+);
+
+CREATE TABLE doctorslist (
+    uid int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    title TEXT NOT NULL,
+    lastname TEXT NOT NULL,
+    firstname TEXT NOT NULL,
+    username TEXT NOT NULL,
+    password VARCHAR(128) NOT NULL
+);
