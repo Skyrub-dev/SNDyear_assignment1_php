@@ -1002,8 +1002,7 @@ if (isset($_GET["error"]))
       </div>
       <div class="modal-body">
         <!--NEED TO INCLUDE INPUT VALIDATION HERE: https://www.the-art-of-web.com/javascript/ajax-validate/-->
-        input fields here, followed by post to seperate table in mysql
-        <form action="#">
+        <form action="includes/guest.inc.php" method="post">
           <?php
             $link = mysqli_connect("localhost", "root", "", "doctorsdb");
             /*$link = mysqli_connect("localhost", "admin", "password", "doctorsdb");*/
@@ -1011,28 +1010,27 @@ if (isset($_GET["error"]))
               die("ERROR: Could not connect. " . mysqli_connect_error());
             }
             
-            //$sql = "SELECT firstname FROM login WHERE username = $username";
-            //$user = mysqli_fetch_assoc($resultss);
             $sqlpatient = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
             $qsqlpatient = mysqli_query($link, $sqlpatient);
             $rspatient = mysqli_fetch_array($qsqlpatient);
-            echo $rspatient["firstname"];
-              //echo "<p>" .  $_GET['firstname'] . "</p>";
-            
+            echo "<label for='fname'> Firstname: " . $rspatient["firstname"] . "</label>";
+            echo "<br>";
+            echo "<br>";
+            echo "<label for='lname'> Lastname: " . $rspatient["lastname"] . "</label>";
+            echo "<br>";
+            echo "<br>";
+            echo "<label for='dob'> Date of birth: " . $rspatient["dob"] . "</label>";
+            echo "<br>";
+            echo "<br>";
+            echo "<label for='email'> Email: " . $rspatient["email"] . "</label>";
+            echo "<br>";
+            echo "<br>";
             
 
           ?>
-          <!--https://code-boxx.com/autocomplete-php-mysql/-->
-          <!--Should use $_SESSION GET-->
-          <label for="fname">First name:</label>
-          <input type="text" id="fname" name="fname"><br><br>
-          <label for="lname">Last name:</label>
-          <input type="text" id="lname" name="lname"><br><br>
-          <label for="dob">DOB:</label>
-          <input type="date" id="dob" name="dob"><br><br>
           <label for="descrip">Description of problem:</label>
           <input type="text" id="descrip" name="descrip"><br><br>
-          <!--<input type="submit" value="Submit">-->
+          <input type="submit" value="Submit">
         </form> 
       </div>
       <div class="modal-footer">

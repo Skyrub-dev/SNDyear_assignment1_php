@@ -179,6 +179,23 @@ function createDoctor($connection, $title, $lastname, $firstname, $username, $pa
 
 }
 
+function book($connection, $firstname, $lastname, $dob, $email, $desc)
+{
+    $sql = "INSERT INTO guestbook (firstname, lastname, dob, email, description) VALUES (?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($connection);
+    if (!mysqli_stmt_prepare($stmt, $sql))
+    {
+        header("location: ../index.php?error=stmtfailed2.5");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "sssss", $firstname, $lastname, $dob, $email, $desc);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../index.php?error=none");
+    exit();
+}
+
 /*Function for empty login fields */
 function emptyInputLogin($username, $pass)
 {
