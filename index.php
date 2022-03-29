@@ -239,7 +239,12 @@
         <h2 class="text-center text-white">Looking for something specific?</h2>
         <p class="lead text-center text-white mb-5">
           <!--SEARCH HERE-->
-          
+          <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
         </p>
       </div>
     </div>
@@ -269,7 +274,7 @@
       <div class="accordion-item">
         <h2 class="accordion-header" id="flush-headingTwo">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-            What services do we provide?
+            <i>What services do we provide?</i>
           </button>
         </h2>
         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
@@ -289,61 +294,41 @@
       <div class="accordion-item">
         <h2 class="accordion-header" id="flush-headingThree">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            Accordion Item #3
+            <i>When are we open?</i>
           </button>
         </h2>
         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+          <div class="accordion-body">We are open between the hours of 9am to 5pm Monday - Friday</div>
         </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            Accordion Item #3
+        <h2 class="accordion-header" id="flush-headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseThree">
+            <i>How can I contact the surgery?</i>
           </button>
         </h2>
-        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">You can contact us through our email at DocSurgery@surgery.com or phone us at 01229 3257382.</div>
         </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            Accordion Item #3
+        <h2 class="accordion-header" id="flush-headingSix">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseThree">
+            <i>Help! I have an emergency</i>
           </button>
         </h2>
-        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+        <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">In the event of an emergency please call 999 or visit your local hospital immidiately.</div>
         </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            Accordion Item #3
+        <h2 class="accordion-header" id="flush-headingSeven">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseThree">
+            <i>I've forgotten my login information</i>
           </button>
         </h2>
-        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            Accordion Item #3
-          </button>
-        </h2>
-        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            Accordion Item #3
-          </button>
-        </h2>
-        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+        <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">In the event of a forgotten password, click here. If you have forgotten your username, you will need to contact us at, 01229 3257382 for verification purposes</div>
         </div>
       </div>
   </div>
@@ -358,20 +343,15 @@
           <!--THINKING OF CUTTING THIS OUT FOR JUST THE MAP-->
           <ul class="list-group list-group-flush lead">
             <li class="list-group-item">
-              <span class="fw-bold">Main location</span> 50 mainstreet, Boston MA
+              <span class="fw-bold">Address</span> Furness College Channelside, Barrow-in-Furness, Cumbria, United Kingdom
             </li>
             <li class="list-group-item">
-              <span class="fw-bold">Main location</span> 50 mainstreet, Boston MA
+              <span class="fw-bold">Support email</span> Docsurgery@surgery.com
             </li>
             <li class="list-group-item">
-              <span class="fw-bold">Main location</span> 50 mainstreet, Boston MA
+              <span class="fw-bold">Phone number</span> 01229 53892938
             </li>
-            <li class="list-group-item">
-              <span class="fw-bold">Main location</span> 50 mainstreet, Boston MA
-            </li>
-            <li class="list-group-item">
-              <span class="fw-bold">Main location</span> 50 mainstreet, Boston MA
-            </li>
+            
           </ul>
         </p>
       </div>
@@ -905,7 +885,7 @@ if (isset($_GET["error"]))
       <div class="modal-footer">
       <!--Should probably remove for security-->
       <!--<button onClick="location.href='test.php'" class="btn btn-primary" data-bs-dismiss="modal">Admin?</button>-->
-      <!--<button class="btn btn-primary" data-bs-target="#doclogin" data-bs-toggle="modal" data-bs-dismiss="modal">Book</button>-->
+      <button class="btn btn-primary" data-bs-target="#doclogin" data-bs-toggle="modal" data-bs-dismiss="modal">Forgot your password?</button>
       <p><em>Remember you can always visit us to book at: Furness College, Barrow-in-Furness</em></p>
       </div>
     </div>
@@ -1026,16 +1006,17 @@ if (isset($_GET["error"]))
         <form action="#">
           <?php
             $link = mysqli_connect("localhost", "root", "", "doctorsdb");
-
+            /*$link = mysqli_connect("localhost", "admin", "password", "doctorsdb");*/
             if($link === false){
               die("ERROR: Could not connect. " . mysqli_connect_error());
             }
             
             //$sql = "SELECT firstname FROM login WHERE username = $username";
             //$user = mysqli_fetch_assoc($resultss);
-
-              echo "<form action='#'>";
-              echo "<label for='fname'>Firstname:" . $_SESSION['firstname'] . "</label>";
+            $sqlpatient = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
+            $qsqlpatient = mysqli_query($link, $sqlpatient);
+            $rspatient = mysqli_fetch_array($qsqlpatient);
+            echo $rspatient["firstname"];
               //echo "<p>" .  $_GET['firstname'] . "</p>";
             
             
@@ -1072,6 +1053,12 @@ if (isset($_GET["error"]))
         Insert calendar here, needs to be interactive and pass the contents of the date and time to a post method to be uploaded to the data base, take a look at doing it in Javascript: https://mindfusion.eu/blog/interactive-calendar-with-events-in-javascript/
         <label for="dob">Date:</label>
         <input type="date" id="dob" name="dob"><br><br>
+        <label>
+                                                <input placeholder="Appointment Time" type="text"
+                                                    onfocus="(this.type='time')" class="form-control"
+                                                    name="appointmenttime" id="appointmenttime"><i
+                                                    class="ion-ios-clock"></i>
+                                            </label>
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary" data-bs-target="#exampleModalToggle4" data-bs-toggle="modal" data-bs-dismiss="modal">Book</button>

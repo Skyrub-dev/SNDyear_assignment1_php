@@ -231,6 +231,8 @@ function loginUser($connection, $username, $pass)
         session_start();
         $_SESSION["id"] = $uidExists["id"];
         $_SESSION["username"] = $uidExists["username"];
+        $_SESSION["firstname"] = $uidExists["firstname"];
+        $_SESSION["dob"] = $uidExists["dob"];
         header("location: ../index.php");
         exit();
     }
