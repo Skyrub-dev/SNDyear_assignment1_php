@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2022 at 07:53 PM
+-- Generation Time: Mar 29, 2022 at 08:40 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -108,7 +108,10 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`uid`, `username`, `password`, `firstname`, `lastname`, `dob`, `email`, `priv`) VALUES
 (9, 'Tom', '$2y$10$BSMHU2Jx6IIrKdyH9t9Keu/30GyH4FE65XifhsNJdoVa/wGsTla0i', 'Tom', 'Kennedy', '2022-03-08', 'tomkenned9@gmail.com', 'C'),
-(10, 'Admin', '$2y$10$BSMHU2Jx6IIrKdyH9t9Keu/30GyH4FE65XifhsNJdoVa/wGsTla0i', 'N/A', 'N/A', '0000-00-00', 'admin@mail.com', 'A');
+(10, 'Admin', '$2y$10$BSMHU2Jx6IIrKdyH9t9Keu/30GyH4FE65XifhsNJdoVa/wGsTla0i', 'N/A', 'N/A', '0000-00-00', 'admin@mail.com', 'A'),
+(11, 'TKennedy', '$2y$10$AV33pryd2Vt3DGxQ6S17/.5Je/Jg1KtHE7fh2ncblqLFaWP7Cv/bC', 'Tom', 'Kennedy', '2022-03-08', 'tomkennedy428@gmail.com', 'C'),
+(12, 'JDoe', '$2y$10$VGA8LPfupq2zVGq0GCJuI.IuAcL1RG5doeWZf0y0VUA0YDCtou5ci', 'John', 'Doe', '2022-02-28', 'JDoe@gmail.com', 'C'),
+(13, 'TDoe', '$2y$10$u0c8V7W0lxju2NDPYgzWtOFA.tO6m1.pbrohXExnCoRvrDOxZTQd2', 'Tom', 'Doe', '2022-03-01', 'TDoe@email.com', 'C');
 
 --
 -- Indexes for dumped tables
@@ -164,7 +167,7 @@ ALTER TABLE `guestbook`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
