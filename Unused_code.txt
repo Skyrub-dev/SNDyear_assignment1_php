@@ -10,3 +10,26 @@
             <!--<a href="#learn" class="badge bg-primary">Sign up</a>-->
           </li>
           <!---->
+
+
+          $sqlappointment="SELECT * FROM appointment WHERE appointmentdate='$_POST[appointmentdate]' AND appointmenttime='$_POST[appointmenttime]' AND doctorid='$_POST[doct]' AND status='Approved'";
+	$qsqlappointment = mysqli_query($con,$sqlappointment);
+	if(mysqli_num_rows($qsqlappointment) >= 1)
+	{
+		echo "<script>alert('Appointment already scheduled for this time..');</script>";
+	}
+	else
+	{
+		$sql ="INSERT INTO appointment(appointmenttype,patientid,appointmentdate,appointmenttime,app_reason,status,departmentid,doctorid) values('ONLINE','$lastinsid','$_POST[appointmentdate]','$_POST[appointmenttime]','$_POST[app_reason]','Pending','$_POST[department]','$_POST[doct]')";
+		if($qsql = mysqli_query($con,$sql))
+		{
+			echo "<script>alert('Appointment record inserted successfully...');</script>";
+		}
+		else
+		{
+			echo mysqli_error($con);
+		}
+	}
+
+
+  
