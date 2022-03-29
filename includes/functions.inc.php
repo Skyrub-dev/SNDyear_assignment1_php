@@ -181,7 +181,7 @@ function createDoctor($connection, $title, $lastname, $firstname, $username, $pa
 
 function book($connection, $firstname, $lastname, $dob, $email, $desc)
 {
-    $sql = "INSERT INTO guestbook (firstname, lastname, dob, email, description) VALUES (?, ?, ?, ?);";
+    $sql = "INSERT INTO guestbook (firstname, lastname, dob, email, description) VALUES (?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($connection);
     if (!mysqli_stmt_prepare($stmt, $sql))
     {

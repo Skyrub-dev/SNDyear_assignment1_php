@@ -974,18 +974,37 @@ if (isset($_GET["error"]))
       <div class="modal-body">
         <!--NEED TO INCLUDE INPUT VALIDATION HERE: https://www.the-art-of-web.com/javascript/ajax-validate/-->
         input fields here, followed by post to seperate table in mysql
-        <form action="#">
+        <form action="includes/guest.inc.php" method="post">
           <label for="fname">First name:</label>
           <input type="text" id="fname" name="fname"><br><br>
           <label for="lname">Last name:</label>
           <input type="text" id="lname" name="lname"><br><br>
           <label for="dob">DOB:</label>
           <input type="date" id="dob" name="dob"><br><br>
+          <label for="email">Enter your email:</label>
+          <input type="email" id="email" name="email">
           <label for="descrip">Description of problem:</label>
           <input type="text" id="descrip" name="descrip"><br><br>
-          <!--<input type="submit" value="Submit">-->
+          <button type="submit" name="submit">Submit</button>
         </form> 
       </div>
+      <?php
+    /*error handlers, each one of these has a function attatched to it in
+    functions.inc.php */
+if (isset($_GET["error"]))
+{
+    if ($_GET["error"] == "emptyinput")
+    {
+        echo "<h1>Fill in all fields</h1>";
+    }
+    else if ($_GET["error"] == "none")
+    {
+        echo "<h1>successfully signed up!</h1>";
+        header("location: index.php");
+        exit();
+    }
+}
+?>
       <div class="modal-footer">
         <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" data-bs-dismiss="modal">Continue</button>
       </div>
@@ -1030,9 +1049,26 @@ if (isset($_GET["error"]))
           ?>
           <label for="descrip">Description of problem:</label>
           <input type="text" id="descrip" name="descrip"><br><br>
-          <input type="submit" value="Submit">
+          <button type="submit" name="submit">Submit</button>
         </form> 
       </div>
+      <?php
+    /*error handlers, each one of these has a function attatched to it in
+    functions.inc.php */
+if (isset($_GET["error"]))
+{
+    if ($_GET["error"] == "emptyinput")
+    {
+        echo "<h1>Fill in all fields</h1>";
+    }
+    else if ($_GET["error"] == "none")
+    {
+        echo "<h1>successfully signed up!</h1>";
+        header("location: index.php");
+        exit();
+    }
+}
+?>
       <div class="modal-footer">
         <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" data-bs-dismiss="modal">Continue</button>
       </div>

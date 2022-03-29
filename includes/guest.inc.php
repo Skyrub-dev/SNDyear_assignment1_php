@@ -19,14 +19,14 @@ if (isset($_POST["submit"])) {
     //NEED TO CHANGE THESE
 
     /*ERROR HANDLERS*/
-
+    if(isset($_SESSION["username"]))
+    {
+        $sqlpatient = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
+        $sql = "INSERT INTO guestbook (firstname, lastname, dob, email) VALUES (?, ?, ?, ?);";
+    }
     /*Error for if the input fields have not been answered - will change the URL to
     correspond*/
-    if (emptyInput($firstname, $lastname, $dob, $email, $desc) !== false)
-    {
-        header("location: ../index.php?error=emptyinput");
-        exit();
-    }
+    
 
     /*Initialises the 'createuser' function, passes the $connection, $username and $pass
     variables to the function */
