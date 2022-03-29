@@ -149,7 +149,7 @@ function createUser($connection, $username, $pass, $firstname, $lastname, $dob, 
     mysqli_stmt_bind_param($stmt, "ssssss", $username, $hashedpass, $firstname, $lastname, $dob, $email);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../index.php?error=none");
+    header("location: ../index.php");
     exit();
 
 }
