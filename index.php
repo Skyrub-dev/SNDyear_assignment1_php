@@ -16,6 +16,25 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="style.css">
 
+  <script>
+function showResult(str) {
+  if (str.length==0) {
+    document.getElementById("livesearch").innerHTML="";
+    document.getElementById("livesearch").style.border="0px";
+    return;
+  }
+  var xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("livesearch").innerHTML=this.responseText;
+      document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+    }
+  }
+  xmlhttp.open("GET","livesearch.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
+
   <title>Doctors Surgery | Home</title>
 </head>
 <body>
@@ -239,12 +258,11 @@
         <h2 class="text-center text-white">Looking for something specific?</h2>
         <p class="lead text-center text-white mb-5">
           <!--SEARCH HERE-->
-          <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
+          <form>
+            <input type="text" size="150" onkeyup="showResult(this.value)">
+            <div id="livesearch"></div>
+          </form>
+          
         </p>
       </div>
     </div>
