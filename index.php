@@ -1039,7 +1039,7 @@ if (isset($_GET["error"]))
       </div>
       <div class="modal-body">
         <!--NEED TO INCLUDE INPUT VALIDATION HERE: https://www.the-art-of-web.com/javascript/ajax-validate/-->
-        <form action="includes/guest.inc.php" method="post">
+        <form action="includes/loggedinbook.inc.php" method="post">
           <?php
             $link = mysqli_connect("localhost", "root", "", "doctorsdb");
             /*$link = mysqli_connect("localhost", "admin", "password", "doctorsdb");*/
@@ -1050,7 +1050,7 @@ if (isset($_GET["error"]))
             $sqlpatient = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
             $qsqlpatient = mysqli_query($link, $sqlpatient);
             $rspatient = mysqli_fetch_array($qsqlpatient);
-            echo "<label for='fname'> Firstname: " . $rspatient["firstname"] . "</label>";
+            echo "<label for='fname' id='fname'> Firstname: " . $rspatient["firstname"] . "</label>";
             echo "<br>";
             echo "<br>";
             echo "<label for='lname'> Lastname: " . $rspatient["lastname"] . "</label>";
