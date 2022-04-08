@@ -1,3 +1,4 @@
+<!--Sampled from W3SCHOOLS https://www.w3schools.com/PHP/php_ajax_livesearch.asp-->
 <?php
 $xmlDoc=new DOMDocument();
 $xmlDoc->load("search.xml");
@@ -35,11 +36,11 @@ if (strlen($q)>0) {
 // Set output to "no suggestion" if no hint was found
 // or to the correct values
 if ($hint=="") {
-  $response="no suggestion";
+  $response="Nothing was found matching your search!";
 } else {
   $response=$hint;
 }
 
-//output the response
-echo $response;
+//response output in white to match site theme
+echo "<div style='color:white'>" . $response . "</div>";
 ?>

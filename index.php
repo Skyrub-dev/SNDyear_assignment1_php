@@ -349,6 +349,16 @@ function showResult(str) {
           <div class="accordion-body">In the event of a forgotten password, click here. If you have forgotten your username, you will need to contact us at, 01229 3257382 for verification purposes</div>
         </div>
       </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingEight">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
+            <i>How does the process work?</i>
+          </button>
+        </h2>
+        <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">Once you submit your query for an appointment using the website's appointment maker, one of our doctors will review your information and send you a follow up email discussing a time and</div>
+        </div>
+      </div>
   </div>
 </section>
 
@@ -1046,7 +1056,7 @@ if (isset($_GET["error"]))
             if($link === false){
               die("ERROR: Could not connect. " . mysqli_connect_error());
             }
-            
+
             $sqlpatient = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
             $qsqlpatient = mysqli_query($link, $sqlpatient);
             $rspatient = mysqli_fetch_array($qsqlpatient);
@@ -1062,7 +1072,6 @@ if (isset($_GET["error"]))
             echo "<label for='email'> Email: " . $rspatient["email"] . "</label>";
             echo "<br>";
             echo "<br>";
-            
 
           ?>
           <label for="descrip">Description of problem:</label>
@@ -1089,31 +1098,6 @@ if (isset($_GET["error"]))
 ?>
       <div class="modal-footer">
         <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" data-bs-dismiss="modal">Continue</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel3">When are you avaliable?</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Insert calendar here, needs to be interactive and pass the contents of the date and time to a post method to be uploaded to the data base, take a look at doing it in Javascript: https://mindfusion.eu/blog/interactive-calendar-with-events-in-javascript/
-        <label for="dob">Date:</label>
-        <input type="date" id="dob" name="dob"><br><br>
-        <label>
-                                                <input placeholder="Appointment Time" type="text"
-                                                    onfocus="(this.type='time')" class="form-control"
-                                                    name="appointmenttime" id="appointmenttime"><i
-                                                    class="ion-ios-clock"></i>
-                                            </label>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle4" data-bs-toggle="modal" data-bs-dismiss="modal">Book</button>
       </div>
     </div>
   </div>

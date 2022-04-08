@@ -32,4 +32,10 @@
 	}
 
 
+       $sql = "SELECT username FROM users WHERE username = '$username'";
+       $result = $conn->query($sql);
+
+       if($result->num_rows > 0) {
+           $usernameErr =  "username already taken"; //takes'em back to form
+       } else { // go on to INSERT new record
   
