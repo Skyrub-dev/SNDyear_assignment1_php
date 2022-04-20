@@ -9,6 +9,7 @@ if (isset($_POST["submit"])) {
     $username = $_POST["uid"];
     $pass = $_POST["pass"];
     $passrepeat = $_POST["passrepeat"];
+    $department = $_POST["department"];
 
     /*Using 'connect.inc.php' to actually connect to the database first, then
     using 'functions.inc.php' to grab the functions which have been set on the
@@ -46,7 +47,7 @@ if (isset($_POST["submit"])) {
     }
     /*Initialises the 'createuser' function, passes the $connection, $username and $pass
     variables to the function */
-    createDoctor($connection, $title, $lastname, $firstname, $username, $pass, $passrepeat);
+    createDoctor($connection, $title, $lastname, $firstname, $username, $pass, $passrepeat, $department);
 
 }
 /*if result does not match these handlers, will redirect to the signup page */

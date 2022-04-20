@@ -17,6 +17,7 @@ if (isset($_POST["submit"])) {
     $dob = $_SESSION["dob"];
     $email = $rspatient["email"];
     $desc = $_POST["descrip"];
+    $department = $_POST["department"];
     
     /*Using 'connect.inc.php' to actually connect to the database first, then
     using 'functions.inc.php' to grab the functions which have been set on the
@@ -29,7 +30,7 @@ if (isset($_POST["submit"])) {
     /*Initialises the 'createuser' function, passes the $connection, $username and $pass
     variables to the function */
     //loggedbook($connection, $fname, $desc);
-    book($connection, $firstname, $lastname, $dob, $email, $desc);
+    book($connection, $firstname, $lastname, $dob, $email, $desc, $department);
 
 
 }

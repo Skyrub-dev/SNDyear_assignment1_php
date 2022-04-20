@@ -11,7 +11,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   
 
-  <title>Admin</title>
+  <title>Doctor</title>
 </head>
 <body style="background-color:#292b2c;">
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
@@ -46,16 +46,13 @@
     <div class="container">
       <div class="d-sm-flex align-items-center justify-content-between">
         <div>
-          <h1>Admin login
+          <h1>Doctors login
           </span></h1>
-          <form action ="includes/adminlogin.inc.php" method ="post">
+          <form action ="includes/doctorlogin.inc.php" method ="post">
             <input type="text" name="uid" placeholder="Username...">
             <br>
             <br>
             <input type="password" name="pass" placeholder="Password...">
-            <br>
-            <br>
-            <input type="password" name="passcode" placeholder="Passcode...">
             <br>
             <br>
             <button type="submit" name="submit">login</button>

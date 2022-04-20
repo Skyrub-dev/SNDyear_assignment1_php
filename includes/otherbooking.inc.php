@@ -1,6 +1,6 @@
 <?php
 
-//Responsible for passing temporary guest bookings
+//Used when someone is booking for someone else - probably needs a login varient too
 
 if (isset($_POST["submit"])) {
     
@@ -11,25 +11,29 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $desc = $_POST["descrip"];
     $department = $_POST["department"];
-    /*Using 'connect.inc.php' to actually connect to the database first, then
-    using 'functions.inc.php' to grab the functions which have been set on the
-    error handlers below */
+
+    $gfname = $_POST["gfname"];
+    $glname = $_POST["glname"];
+    $gdob = $_POST["gdob"];
+    $gemail = $_POST["gemail"];
+    $gdescrip = $_POST["gdescrip"];
+
+    
+
     require_once 'connect.inc.php';
     require_once 'functions.inc.php';
 
-    //NEED TO CHANGE THESE
 
     /*ERROR HANDLERS*/
-    /*Error for if the input fields have not been answered - will change the URL to
-    correspond*/
+    
     
 
     /*Initialises the 'createuser' function, passes the $connection, $username and $pass
     variables to the function */
-    book($connection, $firstname, $lastname, $dob, $email, $desc, $department);
+    loggedbook($connection, $firstname, $lastname, $dob, $email, $desc, $department, $gfname, $glname, $gdob, $gemail, $gdescrip);
 
 }
-/*if result does not match these handlers, will redirect to the signup page */
+
 else {
     header("location: ../index.php?=gfhg");
     exit();

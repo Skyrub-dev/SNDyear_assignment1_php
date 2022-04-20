@@ -40,7 +40,7 @@ function showResult(str) {
 <body>
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
     <div class="container">
-      <a href="#" class="navbar-brand">Doctors Surgery</a>
+      <a href="index.php" class="navbar-brand">Doctors Surgery</a>
 
       <button 
       class="navbar-toggler" 
@@ -72,11 +72,13 @@ function showResult(str) {
           else
           {
             echo "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModalToggle'>
-            Book an appointment / Login
+            Book an appointment / Patient login
             </button>";
+            echo "&nbsp;&nbsp;<a href='doctorlogin.php' class='btn btn-warning' role='button'>Doctor? login here</a>";
           }
+          /*Need to fix above link - doctors button doesn't work */
           /*https://stackoverflow.com/questions/18348168/mysql-check-account-type-to-see-if-admin-on-login*/
-          
+          /*DON'T DELETE - INCLUDE IN REFERENCES https://stackoverflow.com/questions/31198170/want-to-add-spacing-between-buttons*/
         ?>
             
             <!--<a href="#instructors" class="nav-link">Book an appointment</a>-->
@@ -868,7 +870,7 @@ function showResult(str) {
         <button class="btn btn-secondary" data-bs-target="#signup" data-bs-toggle="modal" data-bs-dismiss="modal">Sign up</button>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Skip</button>
+        <button class="btn btn-primary" data-bs-target="#who" data-bs-toggle="modal" data-bs-dismiss="modal">Skip</button>
       </div>
     </div>
   </div>
@@ -979,6 +981,7 @@ if (isset($_GET["error"]))
     else if ($_GET["error"] == "none")
     {
         echo "<h1>successfully signed up!</h1>";
+        session_start();
         header("location: index.php");
         exit();
     }
@@ -1001,7 +1004,6 @@ if (isset($_GET["error"]))
       </div>
       <div class="modal-body">
         <!--NEED TO INCLUDE INPUT VALIDATION HERE: https://www.the-art-of-web.com/javascript/ajax-validate/-->
-        input fields here, followed by post to seperate table in mysql
         <form action="includes/guest.inc.php" method="post">
           <label for="fname">First name:</label>
           <input type="text" id="fname" name="fname"><br><br>
@@ -1010,7 +1012,29 @@ if (isset($_GET["error"]))
           <label for="dob">DOB:</label>
           <input type="date" id="dob" name="dob"><br><br>
           <label for="email">Enter your email:</label>
-          <input type="email" id="email" name="email">
+          <input type="email" id="email" name="email"><br><br>
+          <label for="department">Select the department most relavent to your problem</label>
+          <select name="department" id="department">
+            <option value="AAE">Accident and Emergency (A&E)</option>
+            <option value="GS">General Surgery (GS)</option>
+            <option value="D">Dietics (D)</option>
+            <option value="MHS">Mental Health Services (MHS)</option>
+          </select>
+
+          <script type="text/javascript">
+            $(document).ready(function())
+            {
+              $('#department').change(function())
+              {
+                var value = $(this).val(); var toAppend = '';
+              }
+            }
+            
+
+          </script>
+
+          <br>
+          <br>
           <label for="descrip">Description of problem:</label>
           <input type="text" id="descrip" name="descrip"><br><br>
           <button type="submit" name="submit">Submit</button>
@@ -1033,6 +1057,85 @@ if (isset($_GET["error"]))
     }
 }
 ?>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" data-bs-dismiss="modal">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="who" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Who are you booking for?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Yourself</button>
+      <button class="btn btn-primary" data-bs-target="#whomenu" data-bs-toggle="modal" data-bs-dismiss="modal">Someone else</button>
+        
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="whomenu" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Please enter some information about the person you're booking for...</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!--NEED TO INCLUDE INPUT VALIDATION HERE: https://www.the-art-of-web.com/javascript/ajax-validate/-->
+        <form action="includes/otherbooking.inc.php" method="post">
+          <label for="fname">First name:</label>
+          <input type="text" id="fname" name="fname"><br><br>
+          <label for="lname">Last name:</label>
+          <input type="text" id="lname" name="lname"><br><br>
+          <label for="dob">DOB:</label>
+          <input type="date" id="dob" name="dob"><br><br>
+          <label for="email">Enter your email:</label>
+          <input type="email" id="email" name="email"><br><br>
+          <label for="department">Select the department most relavent to your problem</label>
+          <select name="department" id="department">
+            <option value="AAE">Accident and Emergency (A&E)</option>
+            <option value="GS">General Surgery (GS)</option>
+            <option value="D">Dietics (D)</option>
+            <option value="MHS">Mental Health Services (MHS)</option>
+          </select>
+
+          <br>
+          <br>
+          <label for="descrip">Description of problem:</label>
+          <input type="text" id="descrip" name="descrip"><br><br>
+
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleLabel2">Please enter some information about yourself...</h5>
+          </div>
+
+          <label for="gfname">First name:</label>  
+          <input type="text" id="gfname" name="gfname"><br><br>
+          <label for="glname">Last name:</label>
+          <input type="text" id="glname" name="glname"><br><br>
+          <label for="gdob">DOB:</label>
+          <input type="date" id="gdob" name="gdob"><br><br>
+          <label for="gemail">Enter your email:</label>
+          <input type="email" id="gemail" name="gemail"><br><br>
+          
+
+          <br>
+          <br>
+          <label for="gdescrip">Why are you booking on behalf of this person?</label>
+          <input type="text" id="gdescrip" name="gdescrip"><br><br>
+          
+          <button type="submit" name="submit">Submit</button>
+
+        </form>
+      </div>
       <div class="modal-footer">
         <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" data-bs-dismiss="modal">Continue</button>
       </div>
@@ -1074,6 +1177,15 @@ if (isset($_GET["error"]))
             echo "<br>";
 
           ?>
+          <label for="department">Select the department most relavent to your problem</label>
+          <select name="department" id="department">
+            <option value="AAE">Accident and Emergency (A&E)</option>
+            <option value="GS">General Surgery (GS)</option>
+            <option value="D">Dietics (D)</option>
+            <option value="MHS">Mental Health Services (MHS)</option>
+          </select>
+          <br>
+          <br>
           <label for="descrip">Description of problem:</label>
           <input type="text" id="descrip" name="descrip"><br><br>
           <button type="submit" name="submit">Submit</button>
@@ -1140,7 +1252,7 @@ if (isset($_GET["error"]))
 		}
  
 		// Attempt select query execution
-		$sql = "SELECT * FROM login";
+		$sql = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
 			if($result = mysqli_query($link, $sql)){
 				if(mysqli_num_rows($result) > 0){
 					echo "<table>";

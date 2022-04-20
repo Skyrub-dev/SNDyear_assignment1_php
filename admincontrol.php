@@ -45,6 +45,15 @@
         <input type="password" name="passrepeat" placeholder="Enter Password again...">
         <br>
         <br>
+        <label for="department">Assigned to:</label>
+          <select name="department" id="department">
+            <option value="AAE">Accident and Emergency (A&E)</option>
+            <option value="GS">General Surgery (GS)</option>
+            <option value="D">Dietics (D)</option>
+            <option value="MHS">Mental Health Services (MHS)</option>
+          </select>
+          <br>
+          <br>
         <button type="submit" name="submit">Sign up</button>
     </form>
 
