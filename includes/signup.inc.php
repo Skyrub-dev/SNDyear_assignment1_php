@@ -10,7 +10,6 @@ if (isset($_POST["submit"])) {
     $lastname = $_POST["lastname"];
     $dob = $_POST["dob"];
     $email = $_POST["email"];
-    $priv = $_POST["priv"];
     /*Using 'connect.inc.php' to actually connect to the database first, then
     using 'functions.inc.php' to grab the functions which have been set on the
     error handlers below */
@@ -47,7 +46,7 @@ if (isset($_POST["submit"])) {
     }
     /*Initialises the 'createuser' function, passes the $connection, $username and $pass
     variables to the function */
-    createUser($connection, $username, $pass, $firstname, $lastname, $dob, $email, $priv);
+    createUser($connection, $username, $pass, $firstname, $lastname, $dob, $email);
 
 }
 /*if result does not match these handlers, will redirect to the signup page */

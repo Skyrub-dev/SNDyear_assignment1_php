@@ -166,11 +166,11 @@ function doctorExists($connection, $username)
 }
 
 /*Function responsible for creating the user */
-function createUser($connection, $username, $pass, $firstname, $lastname, $dob, $email, $priv)
+function createUser($connection, $username, $pass, $firstname, $lastname, $dob, $email)
 {
     /*Again, using a prepared statement, when the data is entered it will
     insert those values into the username and password fields in the database */
-    $sql = "INSERT INTO login (username, password, firstname, lastname, dob, email, priv) VALUES (?, ?, ?, ?, ?, ?, 'C');";
+    $sql = "INSERT INTO login (username, password, firstname, lastname, dob, email) VALUES (?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($connection);
     if (!mysqli_stmt_prepare($stmt, $sql))
     {
@@ -216,9 +216,9 @@ function createDoctor($connection, $title, $lastname, $firstname, $username, $pa
 
 }
 
-function book($connection, $firstname, $lastname, $dob, $email, $desc, $department)
+function book($connection, $firstname, $lastname, $dob, $email, $desc, $department, $id)
 {
-    $sql = "INSERT INTO guestbook (firstname, lastname, dob, email, description, department, self) VALUES (?, ?, ?, ?, ?, ?, 'YES');";
+    $sql = "INSERT INTO guestbook (firstname, lastname, dob, email, description, department, uid, self) VALUES (?, ?, ?, ?, ?, ?, ?, 'YES');";
     $stmt = mysqli_stmt_init($connection);
     if (!mysqli_stmt_prepare($stmt, $sql))
     {
@@ -226,7 +226,7 @@ function book($connection, $firstname, $lastname, $dob, $email, $desc, $departme
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "ssssss", $firstname, $lastname, $dob, $email, $desc, $department);
+    mysqli_stmt_bind_param($stmt, "sssssss", $firstname, $lastname, $dob, $email, $desc, $department, $id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../index.php?error=none");

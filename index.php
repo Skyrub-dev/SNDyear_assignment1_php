@@ -60,8 +60,8 @@ function showResult(str) {
           <?php
           if (isset($_SESSION["username"]))
           {
-            /*Grabs the username of the user and displays it on the site*/
-            echo "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#loggedin'>
+            /*Grabs the username of the user and displays it on the site - looged in called #loggedin*/
+            echo "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#who'>
             Book an appointment
             </button>";
             echo "<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#pending'>
@@ -869,9 +869,6 @@ function showResult(str) {
         <button class="btn btn-primary" data-bs-target="#login" data-bs-toggle="modal" data-bs-dismiss="modal">Login</button>
         <button class="btn btn-secondary" data-bs-target="#signup" data-bs-toggle="modal" data-bs-dismiss="modal">Sign up</button>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#who" data-bs-toggle="modal" data-bs-dismiss="modal">Skip</button>
-      </div>
     </div>
   </div>
 </div>
@@ -922,7 +919,10 @@ if (isset($_GET["error"]))
   </div>
 </div>
 
-<div class="modal fade" id="signup" aria-hidden="true" aria-labelledby="loginlabel" tabindex="-1">
+<!--<input type="password" name="password" id="password" class="demoInputBox" onKeyUp="checkPasswordStrength();" /><div id="password-strength-status"></div>
+</div>-->
+
+<div class="modal fade" name="signup" id="signup" aria-hidden="true" aria-labelledby="loginlabel" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -995,75 +995,6 @@ if (isset($_GET["error"]))
   </div>
 </div>
 
-<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel2">Please enter some information about yourself...</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!--NEED TO INCLUDE INPUT VALIDATION HERE: https://www.the-art-of-web.com/javascript/ajax-validate/-->
-        <form action="includes/guest.inc.php" method="post">
-          <label for="fname">First name:</label>
-          <input type="text" id="fname" name="fname"><br><br>
-          <label for="lname">Last name:</label>
-          <input type="text" id="lname" name="lname"><br><br>
-          <label for="dob">DOB:</label>
-          <input type="date" id="dob" name="dob"><br><br>
-          <label for="email">Enter your email:</label>
-          <input type="email" id="email" name="email"><br><br>
-          <label for="department">Select the department most relavent to your problem</label>
-          <select name="department" id="department">
-            <option value="AAE">Accident and Emergency (A&E)</option>
-            <option value="GS">General Surgery (GS)</option>
-            <option value="D">Dietics (D)</option>
-            <option value="MHS">Mental Health Services (MHS)</option>
-          </select>
-
-          <script type="text/javascript">
-            $(document).ready(function())
-            {
-              $('#department').change(function())
-              {
-                var value = $(this).val(); var toAppend = '';
-              }
-            }
-            
-
-          </script>
-
-          <br>
-          <br>
-          <label for="descrip">Description of problem:</label>
-          <input type="text" id="descrip" name="descrip"><br><br>
-          <button type="submit" name="submit">Submit</button>
-        </form> 
-      </div>
-      <?php
-    /*error handlers, each one of these has a function attatched to it in
-    functions.inc.php */
-if (isset($_GET["error"]))
-{
-    if ($_GET["error"] == "emptyinput")
-    {
-        echo "<h1>Fill in all fields</h1>";
-    }
-    else if ($_GET["error"] == "none")
-    {
-        echo "<h1>successfully signed up!</h1>";
-        header("location: index.php");
-        exit();
-    }
-}
-?>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" data-bs-dismiss="modal">Continue</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="modal fade" id="who" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -1072,7 +1003,7 @@ if (isset($_GET["error"]))
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Yourself</button>
+      <button class="btn btn-primary" data-bs-target="#loggedin" data-bs-toggle="modal" data-bs-dismiss="modal">Yourself</button>
       <button class="btn btn-primary" data-bs-target="#whomenu" data-bs-toggle="modal" data-bs-dismiss="modal">Someone else</button>
         
       </div>
@@ -1081,6 +1012,7 @@ if (isset($_GET["error"]))
     </div>
   </div>
 </div>
+
 
 <div class="modal fade" id="whomenu" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
@@ -1233,7 +1165,7 @@ if (isset($_GET["error"]))
 </div>
 
 <div class="modal fade" id="pending" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalToggleLabel4">Pending appointments</h5>
@@ -1251,25 +1183,46 @@ if (isset($_GET["error"]))
 		die("ERROR: Could not connect. " . mysqli_connect_error());
 		}
  
+    $sqlpatient = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
+    $qsqlpatient = mysqli_query($link, $sqlpatient);
+    $rspatient = mysqli_fetch_array($qsqlpatient);
 		// Attempt select query execution
-		$sql = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
+		//$sql = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
+    $sql = "SELECT * FROM guestbook WHERE uid='$rspatient[uid]' ";
 			if($result = mysqli_query($link, $sql)){
 				if(mysqli_num_rows($result) > 0){
 					echo "<table>";
 					echo "<tr>";
-					echo "<th>Username</th>";
+          echo "<th>Guest no</th>";
 					echo "<th>First name</th>";
 					echo "<th>Surname</th>";
 					echo "<th>Date of Birth</th>";
           echo "<th>Email</th>";
+          echo "<th>Description</th>";
+          echo "<th>Assigned_to</th>";
+          echo "<th>Department</th>";
+          echo "<th>Self</th>";
+          echo "<th>Guest Firstname</th>";
+          echo "<th>Guest Surname</th>";
+          echo "<th>Guest Date of Birth</th>";
+          echo "<th>Guest Email</th>";
 					echo "</tr>";
 				while($row = mysqli_fetch_array($result)){
 					echo "<tr>";
-					echo "<td>" . $row['username'] . "</td>";
+          echo "<td>" . $row['guestno'] . "</td>";
 					echo "<td>" . $row['firstname'] . "</td>";
 					echo "<td>" . $row['lastname'] . "</td>";
 					echo "<td>" . $row['dob'] . "</td>";
-          echo "<td>" . $row['email'] . "</td>";
+					echo "<td>" . $row['email'] . "</td>";
+          echo "<td>" . $row['description'] . "</td>";
+          echo "<td>" . $row['assigned_to'] . "</td>";
+          echo "<td>" . $row['department'] . "</td>";
+          echo "<td>" . $row['self'] . "</td>";
+          echo "<td>" . $row['gfname'] . "</td>";
+          echo "<td>" . $row['glname'] . "</td>";
+          echo "<td>" . $row['gdob'] . "</td>";
+          echo "<td>" . $row['gemail'] . "</td>";
+          echo "<td>" . $row['gdescrip'] . "</td>";
           echo "<td>" . "<button class='btn btn-danger' data-bs-target='#exampleModalToggle' data-bs-toggle='modal' data-bs-dismiss='modal'>Cancel</button>" . "</td>";
           //COULD HAVE PHP IN A FUNCTION TO DROP TABLE ONCE CLICKED
 					echo "</tr>";
@@ -1302,9 +1255,6 @@ if (isset($_GET["error"]))
       <div class="modal-body">
         <iframe id="tool_bmi" src="https://assets.nhs.uk/tools/bmi/index.html?syn_id=81c84dc0-6b26-11ec-89f7-e334b33bb930" style = "width:100%;" frameborder="0" scrolling="no" seamless></iframe><script src="https://assets.nhs.uk/tools/bmi/js/iframe_helper.js"></script><!--NHS tool-->
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Submit</button>
-      </div>
     </div>
   </div>
 </div>
@@ -1319,9 +1269,6 @@ if (isset($_GET["error"]))
       <div class="modal-body">
         <div style="position: relative; max-width: 500px; height: 300px"><iframe src="https://api-bridge.azurewebsites.net/conditions/?p=all&aspect=name,overview_short,symptoms_short,symptoms_long,treatments_overview_short,other_treatments_long,self_care_long,prevention_short,causes_short&tab=0&uid=81c84dc0-6b26-11ec-89f7-e334b33bb930" title="NHS website - health a-z" style="position: absolute; height: 100%; width: 100%; border: 2px solid #015eb8;"></iframe></div>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Submit</button>
-      </div>
     </div>
   </div>
 </div>
@@ -1335,9 +1282,6 @@ if (isset($_GET["error"]))
       </div>
       <div class="modal-body">
         <iframe id="tool_self-assessments_42" src="https://assets.nhs.uk/tools/self-assessments/index.html?variant=42&syn_id=81c84dc0-6b26-11ec-89f7-e334b33bb930" style = "width:100%;" frameborder="0" scrolling="no" seamless></iframe><script src="https://assets.nhs.uk/tools/self-assessments/js/iframe_helper.js"></script>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Submit</button>
       </div>
     </div>
   </div>

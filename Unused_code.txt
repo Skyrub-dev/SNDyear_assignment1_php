@@ -39,3 +39,72 @@
            $usernameErr =  "username already taken"; //takes'em back to form
        } else { // go on to INSERT new record
   
+
+  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Please enter some information about yourself...</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!--NEED TO INCLUDE INPUT VALIDATION HERE: https://www.the-art-of-web.com/javascript/ajax-validate/-->
+        <form action="includes/guest.inc.php" method="post">
+          <label for="fname">First name:</label>
+          <input type="text" id="fname" name="fname"><br><br>
+          <label for="lname">Last name:</label>
+          <input type="text" id="lname" name="lname"><br><br>
+          <label for="dob">DOB:</label>
+          <input type="date" id="dob" name="dob"><br><br>
+          <label for="email">Enter your email:</label>
+          <input type="email" id="email" name="email"><br><br>
+          <label for="department">Select the department most relavent to your problem</label>
+          <select name="department" id="department">
+            <option value="AAE">Accident and Emergency (A&E)</option>
+            <option value="GS">General Surgery (GS)</option>
+            <option value="D">Dietics (D)</option>
+            <option value="MHS">Mental Health Services (MHS)</option>
+          </select>
+
+          <script type="text/javascript">
+            $(document).ready(function())
+            {
+              $('#department').change(function())
+              {
+                var value = $(this).val(); var toAppend = '';
+              }
+            }
+            
+
+          </script>
+
+          <br>
+          <br>
+          <label for="descrip">Description of problem:</label>
+          <input type="text" id="descrip" name="descrip"><br><br>
+          <button type="submit" name="submit">Submit</button>
+        </form> 
+      </div>
+      <?php
+    /*error handlers, each one of these has a function attatched to it in
+    functions.inc.php */
+if (isset($_GET["error"]))
+{
+    if ($_GET["error"] == "emptyinput")
+    {
+        echo "<h1>Fill in all fields</h1>";
+    }
+    else if ($_GET["error"] == "none")
+    {
+        echo "<h1>successfully signed up!</h1>";
+        header("location: index.php");
+        exit();
+    }
+}
+?>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" data-bs-dismiss="modal">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
