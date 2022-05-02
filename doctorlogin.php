@@ -34,7 +34,6 @@
           </li>
           <li class="nav-item">
             
-            <!--<a href="#instructors" class="nav-link">Book an appointment</a>-->
           </li>
           
         </ul>

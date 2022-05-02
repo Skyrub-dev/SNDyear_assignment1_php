@@ -186,7 +186,7 @@ function createUser($connection, $username, $pass, $firstname, $lastname, $dob, 
     mysqli_stmt_bind_param($stmt, "ssssss", $username, $hashedpass, $firstname, $lastname, $dob, $email);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../index.php?error=none");
+    header("location: ../index.php");
     exit();
 
 }
@@ -195,7 +195,7 @@ function createDoctor($connection, $title, $lastname, $firstname, $username, $pa
 {
     /*Again, using a prepared statement, when the data is entered it will
     insert those values into the username and password fields in the database */
-    $sql = "INSERT INTO doctorslist (title, lastname, firstname, username, password, department) VALUES (?, ?, ?, ?, ?, ?);";
+    $sql = "INSERT INTO doctorslist (title, lastname, firstname, docusername, docpassword, department) VALUES (?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($connection);
     if (!mysqli_stmt_prepare($stmt, $sql))
     {
@@ -229,15 +229,15 @@ function book($connection, $firstname, $lastname, $dob, $email, $desc, $departme
     mysqli_stmt_bind_param($stmt, "sssssss", $firstname, $lastname, $dob, $email, $desc, $department, $id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../index.php?error=none");
+    header("location: ../index.php");
     exit();
 }
 
-function loggedbook($connection, $firstname, $lastname, $dob, $email, $desc, $department, $gfname, $glname, $gdob, $gemail, $gdescrip)
+function loggedbook($connection, $firstname, $lastname, $dob, $email, $desc, $department, $gfname, $glname, $gdob, $gemail, $gdescrip, $id)
 {
     //$sql = "INSERT INTO guestbook (firstname, lastname, dob, email, description";
     
-    $sql = "INSERT INTO guestbook (firstname, lastname, dob, email, description, department, gfname, glname, gdob, gemail, gdescrip, self) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'YES');";
+    $sql = "INSERT INTO guestbook (firstname, lastname, dob, email, description, department, gfname, glname, gdob, gemail, gdescrip, uid, self) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'YES');";
     $stmt = mysqli_stmt_init($connection);
     if (!mysqli_stmt_prepare($stmt, $sql))
     {
@@ -245,10 +245,10 @@ function loggedbook($connection, $firstname, $lastname, $dob, $email, $desc, $de
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "sssssssssss", $firstname, $lastname, $dob, $email, $desc, $department, $gfname, $glname, $gdob, $gemail, $gdescrip);
+    mysqli_stmt_bind_param($stmt, "ssssssssssss", $firstname, $lastname, $dob, $email, $desc, $department, $gfname, $glname, $gdob, $gemail, $gdescrip, $id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../index.php?error=none");
+    header("location: ../index.php");
     exit();
 }
 
@@ -311,7 +311,7 @@ function loginUser($connection, $username, $pass)
     }
 }
 
-function adminlogin($connection, $username, $pass, $pcode)
+function adminlogin($connection, $username, $pass)
 {
     /*Declaring if the username already exists in the database and putting it into
     a new variable*/
@@ -327,27 +327,14 @@ function adminlogin($connection, $username, $pass, $pcode)
     /*Used to verify if the password is hashed, it will convert the password
     entered into hash and check it alongside the one entered */
     $hashedpass = $uidExists["adpassword"];
-    $pcode = $uidExists["passcode"];
     $checkPass = password_verify($pass, $hashedpass);
-
-    /*$passcodecheck;
-    if ($_POST["passcode"] === $row["passcode"])
-    {
-        $passcodecheck = true;
-        return $passcodecheck;
-    }*/
-    /*If it's of the same type and equal to false, will error with the URL
-    'passwordnotverified'*/
 
     if ($checkPass === false)
     {
         header("location: ../index.php?error=passnotverified");
         exit();
     }
-    /*Else if it's of the same type and equal to true it will begin a session
-    for the user with that user ID and username and return the user to the
-    index page, these values can later be used in things like dipsplaying the
-    userid to the user*/
+
     else if ($checkPass === true)
     {
         session_start();

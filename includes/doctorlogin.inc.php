@@ -14,7 +14,7 @@ if (isset($_POST["submit"]))
     if (emptyInputLogin($username, $pass) !== false)
     {
         /*header("location: ../index.php?error=emptyinput");*/
-        echo "<p>empty input</p>";
+        echo "<script> alert('One or more fields is missing input, please try again');</script>";
         exit();
     }
 

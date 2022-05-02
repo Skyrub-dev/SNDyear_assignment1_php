@@ -20,7 +20,7 @@ if (mysqli_connect_errno())
 }
 else
 {
-    echo "Connected to database.";
+    //echo "Connected to database.";
 }
 ?>
 

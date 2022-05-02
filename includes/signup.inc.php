@@ -22,35 +22,35 @@ if (isset($_POST["submit"])) {
     correspond*/
     if (emptyInputSignup($username, $pass, $passrepeat, $firstname, $lastname, $dob, $email, $priv) !== false)
     {
-        header("location: ../signup.php?error=emptyinput");
+        header("location: ../index.php?error=emptyinput");
         exit();
     }
     /*Error for an invalid username, this includes characters not declared in
     functions.inc.php */
     if (invalidUid($username) !== false)
     {
-        header("location: ../signup.php?error=invaliduid");
+        header("location: ../index.php?error=invaliduid");
         exit();
     }
     /*If the passwords do not match from signup, it will error*/
     if (passMatch($pass, $passrepeat) !== false)
     {
-        header("location: ../signup.php?error=passwordsdontmatch");
+        header("location: ../index.php?error=passwordsdontmatch");
         exit();
     }
     /*If the username is already taken, it will error*/
     if (uidExists($connection, $username) !== false)
     {
-        header("location: ../signup.php?error=usernametaken");
+        header("location: ../index.php?error=usernametaken");
         exit();
     }
-    /*Initialises the 'createuser' function, passes the $connection, $username and $pass
+    /*Initialises the 'createuser' function, passes all
     variables to the function */
     createUser($connection, $username, $pass, $firstname, $lastname, $dob, $email);
 
 }
-/*if result does not match these handlers, will redirect to the signup page */
+/*if result does not match these handlers, will redirect back to index page */
 else {
-    header("location: ../signup.php");
+    header("location: ../index.php");
     exit();
 }

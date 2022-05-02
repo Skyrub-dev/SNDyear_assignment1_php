@@ -88,8 +88,6 @@
 					echo "<td>" . $row['lastname'] . "</td>";
 					echo "<td>" . $row['dob'] . "</td>";
           echo "<td>" . $row['email'] . "</td>";
-          //echo "<td>" . "<button class='btn btn-danger' data-bs-target='#exampleModalToggle' data-bs-toggle='modal' data-bs-dismiss='modal'>Cancel</button>" . "</td>";
-          //COULD HAVE PHP IN A FUNCTION TO DROP TABLE ONCE CLICKED
 					echo "</tr>";
 					}
 				echo "</table>";

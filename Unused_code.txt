@@ -108,3 +108,93 @@ if (isset($_GET["error"]))
     </div>
   </div>
 </div>
+
+<?php
+	/*https://www.tutorialrepublic.com/php-tutorial/php-mysql-select-query.php */
+		/* Attempt MySQL server connection. Assuming you are running MySQL
+		server with default setting (user 'root' with no password) */
+		$link = mysqli_connect("localhost", "root", "", "doctorsdb");
+ 
+		// Check connection
+		if($link === false){
+		die("ERROR: Could not connect. " . mysqli_connect_error());
+		}
+ 
+    $sqlpatient = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
+    $qsqlpatient = mysqli_query($link, $sqlpatient);
+    $rspatient = mysqli_fetch_array($qsqlpatient);
+		// Attempt select query execution
+		//$sql = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
+    $sql = "SELECT * FROM guestbook WHERE uid='$rspatient[uid]' ";
+			?>
+
+      <!--MARKED-->
+<div class="modal fade" id="pending" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel4">Pending appointments</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      
+      <table>
+      <tr>
+          <th>guestno</th>
+          <th>firstname</th>
+          <th>Surname</th>
+          <th>Date of birth</th>
+          <th>Email</th>
+          <th>Description</th>
+          <th>Assigned to:</th>
+          <th>Department</th>
+          <th>Booked for self?</th>
+          <th>Guest Firstname</th>
+          <th>Guest Surname</th>
+          <th>Guest Date of birth</th>
+          <th>Guest email</th>
+          <th>Guest decription</th>
+          <th>User account ID</th>
+        </tr>
+        
+        <?php include ("includes/connect.inc.php");
+$sqlpatient = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
+$qsqlpatient = mysqli_query($connection, $sqlpatient);
+$rspatient = mysqli_fetch_array($qsqlpatient);
+$sql = "SELECT * FROM guestbook WHERE uid='$rspatient[uid]' ";
+$query_run = mysqli_query($connection, $sql);
+?>
+        <?php 
+          while($row = mysqli_fetch_array($query_run))
+          {
+        ?>
+
+        <tr>
+          <td><?php echo $row['guestno'];?></td>
+          <td><?php echo $row['firstname'];?></td>
+          <td><?php echo $row['lastname'];?></td>
+          <td><?php echo $row['dob'];?></td>
+          <td><?php echo $row['description'];?></td>
+          <td><?php echo $row['assigned_to'];?></td>
+          <td><?php echo $row['department'];?></td>
+          <td><?php echo $row['self'];?></td>
+          <td><?php echo $row['gfname'];?></td>
+          <td><?php echo $row['glname'];?></td>
+          <td><?php echo $row['gdob'];?></td>
+          <td><?php echo $row['gemail'];?></td>
+          <td><?php echo $row['gdescrip'];?></td>
+          <td><?php echo $row['uid'];?></td>
+          <td> <a href='deleteappoint.php?guestno=<?php echo $row['guestno'];?>'>Cancel</a>
+        </tr>
+        <?php
+          }
+          ?>
+    <!-- <tr>
+      <td><b>Need to update your information? for security purposes and verification call us at: 0774878734</b></td>
+    </tr>   -->
+    </table>
+      
+      </div>
+    </div>
+  </div>
+</div>

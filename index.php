@@ -1,10 +1,8 @@
-<!--https://www.youtube.com/watch?v=4sosXZsdy-s-->
-
-<!--Initial design, use git - initialised at: https://github.com/Skyrub-dev/designs-->
-
 <?php
   session_start();
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +52,7 @@ function showResult(str) {
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a href="#instructors" class="nav-link">F.A.Q</a>
+            <a href="#instructors" class="nav-link">Find us</a>
           </li>
           <li class="nav-item">
           <?php
@@ -64,10 +62,8 @@ function showResult(str) {
             echo "<button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#who'>
             Book an appointment
             </button>";
-            echo "<button type='button' class='btn btn-success' data-bs-toggle='modal' data-bs-target='#pending'>
-            View pending appointments
-            </button>";
-            echo "<li> <a href='includes/logout.inc.php'>Logout</a></li>";
+            echo "&nbsp;&nbsp;<a class='btn btn-success' href='pending.php' role='button'>View pending appointments</a>";
+            echo "&nbsp;&nbsp;<a class='btn btn-danger' href='includes/logout.inc.php' role='button'>Logout</a>";
           }
           else
           {
@@ -76,12 +72,8 @@ function showResult(str) {
             </button>";
             echo "&nbsp;&nbsp;<a href='doctorlogin.php' class='btn btn-warning' role='button'>Doctor? login here</a>";
           }
-          /*Need to fix above link - doctors button doesn't work */
-          /*https://stackoverflow.com/questions/18348168/mysql-check-account-type-to-see-if-admin-on-login*/
-          /*DON'T DELETE - INCLUDE IN REFERENCES https://stackoverflow.com/questions/31198170/want-to-add-spacing-between-buttons*/
         ?>
             
-            <!--<a href="#instructors" class="nav-link">Book an appointment</a>-->
           </li>
           
         </ul>
@@ -89,10 +81,7 @@ function showResult(str) {
     </div>
   </nav>
 
-<!--https://www.youtube.com/watch?v=gLWIYk0Sd38-->
-
   <!--Warning for users if they're in need call XXX or visit hospital-->
-  <!--Need to fix positioning of icon and text to fit on one line-->
   <section class="vg-primary bg-warning text-dark p-3">
     <div class="container">
       <div class="imga">
@@ -200,9 +189,7 @@ function showResult(str) {
 
 </section>
 
-<!--Need to optomise for mobile-->
-
-<section id="overview" class="p-5 bg-dark"> <!--Make primary maybe?-->
+<section id="overview" class="p-5 bg-dark">
   <div class="container">
     <h2 class="text-center text-white">Overview of services we provide:</h2>
     <p class="lead text-center text-white mb-5">
@@ -211,41 +198,33 @@ function showResult(str) {
     <div class="row g-4">
       <div class="col-md-6 col-lg-3">
         <div class="card bg-warning" style="width: 18rem;">
-          <!--<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Ambulances_outside_the_Accident_and_Emergency_Department_-_geograph.org.uk_-_403483.jpg" class="card-img-top" alt="...">-->
           <div class="card-body">
             <h5 class="card-title">A&E Services</h5>
             <p class="card-text"></p>
-            <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
           </div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card" style="width: 18rem;">
-          <!--<img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/vegetables-1238252_960_720.jpg" class="card-img-top" alt="...">-->
           <div class="card-body">
             <h5 class="card-title">Dietics</h5>
             <p class="card-text"></p>
-            <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
           </div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card" style="width: 18rem;">
-          <!--<img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/vegetables-1238252_960_720.jpg" class="card-img-top" alt="...">-->
           <div class="card-body">
             <h5 class="card-title">Mental Health Services</h5>
             <p class="card-text"></p>
-            <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
           </div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card" style="width: 18rem;">
-          <!--<img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/vegetables-1238252_960_720.jpg" class="card-img-top" alt="...">-->
           <div class="card-body">
             <h5 class="card-title">General Surgery</h5>
             <p class="card-text"></p>
-            <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
           </div>
         </div>
       </div>
@@ -253,13 +232,12 @@ function showResult(str) {
   </div>
 </section>
 
-<section id="search" class="p-5 bg-dark"> <!--Make primary maybe?-->
+<section id="search" class="p-5 bg-dark">
   <div class="container">
     <div class="row g-4">
       <div class="col-md">
         <h2 class="text-center text-white">Looking for something specific?</h2>
         <p class="lead text-center text-white mb-5">
-          <!--SEARCH HERE-->
           <form>
             <input type="text" size="150" onkeyup="showResult(this.value)">
             <div id="livesearch"></div>
@@ -279,7 +257,6 @@ function showResult(str) {
     <p class="lead text-center text-white mb-5">
       F.A.Q
     </p>
-    <!--Accordion-->
     <div class="accordion accordion-flush" id="accordionFlushExample">
       <div class="accordion-item">
         <h2 class="accordion-header" id="flush-headingOne">
@@ -301,13 +278,13 @@ function showResult(str) {
           <div class="accordion-body">
             Here are some of the services we provide:
             </br>
-            - dsfsdfsdf
+            - Accident and Emergency
             </br>
-            - fsdfsdf
+            - Dietics
             </br>
-            - fsdfsdf
+            - General Surgery practicies
             </br>
-            - sfdsdfsdf
+            - Mental Health Services
           </div>
         </div>
       </div>
@@ -364,13 +341,12 @@ function showResult(str) {
   </div>
 </section>
 
-<section id="instructors" class="p-5 bg-primary"> <!--Make primary maybe?-->
+<section id="instructors" class="p-5 bg-primary">
   <div class="container">
     <div class="row g-4">
       <div class="col-md">
         <h2 class="text-center text-white">Find us</h2>
         <p class="lead text-center text-white mb-5">
-          <!--THINKING OF CUTTING THIS OUT FOR JUST THE MAP-->
           <ul class="list-group list-group-flush lead">
             <li class="list-group-item">
               <span class="fw-bold">Address</span> Furness College Channelside, Barrow-in-Furness, Cumbria, United Kingdom
@@ -860,12 +836,10 @@ function showResult(str) {
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <!--Might need to hide if the user is already logged in-->
         <h5 class="modal-title" id="exampleModalToggleLabel">Before you start...</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!--Potentially another two models underneath? could utilise login script-->
         <button class="btn btn-primary" data-bs-target="#login" data-bs-toggle="modal" data-bs-dismiss="modal">Login</button>
         <button class="btn btn-secondary" data-bs-target="#signup" data-bs-toggle="modal" data-bs-dismiss="modal">Sign up</button>
       </div>
@@ -890,37 +864,30 @@ function showResult(str) {
         </form>
       </div>
       <?php
-    /*error handlers, each one of these has a function attatched to it in
-    functions.inc.php */
 if (isset($_GET["error"]))
 {
     if ($_GET["error"] == "emptyinput")
     {
-        echo "<h1>Fill in all fields</h1>";
+        echo "<script> alert('Missing input in one or more fields, please try again');</script>";
     }
     else if ($_GET["error"] == "wronglogin")
     {
-        echo "<h1>incorrect login information</h1>";
+        echo "<script> alert('Incorrect login information');</script>";
     }
     else if ($_GET["error"] == "passnotverified")
     {
-        echo "<h1>Password is incorrect, remember passwords are case sensitive</h1>";
+        echo "<script> alert('Password is incorrect, remember passwords are case sensitive');</script>";
     }
 }
 ?>
       </div>
       <div class="modal-footer">
-      <!--Should probably remove for security-->
-      <!--<button onClick="location.href='test.php'" class="btn btn-primary" data-bs-dismiss="modal">Admin?</button>-->
-      <button class="btn btn-primary" data-bs-target="#doclogin" data-bs-toggle="modal" data-bs-dismiss="modal">Forgot your password?</button>
+      <button class="btn btn-primary" data-bs-target="#" data-bs-toggle="modal" data-bs-dismiss="modal">Forgot your password?</button>
       <p><em>Remember you can always visit us to book at: Furness College, Barrow-in-Furness</em></p>
       </div>
     </div>
   </div>
 </div>
-
-<!--<input type="password" name="password" id="password" class="demoInputBox" onKeyUp="checkPasswordStrength();" /><div id="password-strength-status"></div>
-</div>-->
 
 <div class="modal fade" name="signup" id="signup" aria-hidden="true" aria-labelledby="loginlabel" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
@@ -960,36 +927,33 @@ if (isset($_GET["error"]))
 {
     if ($_GET["error"] == "emptyinput")
     {
-        echo "<h1>Fill in all fields</h1>";
+      echo "<script> alert('Missing input in one or more fields, please try again');</script>";  
     }
     else if ($_GET["error"] == "invaliduid")
     {
-        echo "<h1>Please choose a valid username</h1>";
+        echo "<script> alert('Username not valid, please do not include any unsuported characters');</script>";
     }
     else if ($_GET["error"] == "passwordsdontmatch")
     {
-        echo "<h1>Passwords don't match</h1>";
+        echo "<script> alert('Passwords entered do not match, please try again');</script>";
     }
     else if ($_GET["error"] == "stmtfailed")
     {
-        echo "<h1>Something went wrong, please try again!</h1>";
+        echo "<script> alert('Something went wrong, please try again!');</script>";
     }
     else if ($_GET["error"] == "usernametaken")
     {
-        echo "<h1>Username is already taken!</h1>";
+        echo "<script> alert('Username is already taken!');</script>";
     }
     else if ($_GET["error"] == "none")
     {
-        echo "<h1>successfully signed up!</h1>";
+        echo "<script> alert('Welcome to Doctor's Surgery! Learn more in the F.A.Q or get right to booking an appointment');</script>";
         session_start();
         header("location: index.php");
         exit();
     }
 }
 ?>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle4" data-bs-toggle="modal" data-bs-dismiss="modal">Book</button>
       </div>
     </div>
   </div>
@@ -1022,7 +986,6 @@ if (isset($_GET["error"]))
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!--NEED TO INCLUDE INPUT VALIDATION HERE: https://www.the-art-of-web.com/javascript/ajax-validate/-->
         <form action="includes/otherbooking.inc.php" method="post">
           <label for="fname">First name:</label>
           <input type="text" id="fname" name="fname"><br><br>
@@ -1068,9 +1031,6 @@ if (isset($_GET["error"]))
 
         </form>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" data-bs-dismiss="modal">Continue</button>
-      </div>
     </div>
   </div>
 </div>
@@ -1083,7 +1043,6 @@ if (isset($_GET["error"]))
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!--NEED TO INCLUDE INPUT VALIDATION HERE: https://www.the-art-of-web.com/javascript/ajax-validate/-->
         <form action="includes/loggedinbook.inc.php" method="post">
           <?php
             $link = mysqli_connect("localhost", "root", "", "doctorsdb");
@@ -1131,119 +1090,21 @@ if (isset($_GET["error"]))
     if ($_GET["error"] == "emptyinput")
     {
         echo "<h1>Fill in all fields</h1>";
+        echo "<script> alert('Missing input in one or more fields, please try again');</script>";
     }
     else if ($_GET["error"] == "none")
     {
-        echo "<h1>successfully signed up!</h1>";
         header("location: index.php");
+        echo "<script> alert('Appointment successfully booked!');</script>";
         exit();
     }
 }
 ?>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal" data-bs-dismiss="modal">Continue</button>
-      </div>
+      
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="exampleModalToggle4" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel4">Overview of what you've entered...</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        fetch data entered, maybe can access using temp?? not sure need to look into this page as a whole more
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Submit</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="pending" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel4">Pending appointments</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <?php
-	/*https://www.tutorialrepublic.com/php-tutorial/php-mysql-select-query.php */
-		/* Attempt MySQL server connection. Assuming you are running MySQL
-		server with default setting (user 'root' with no password) */
-		$link = mysqli_connect("localhost", "root", "", "doctorsdb");
- 
-		// Check connection
-		if($link === false){
-		die("ERROR: Could not connect. " . mysqli_connect_error());
-		}
- 
-    $sqlpatient = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
-    $qsqlpatient = mysqli_query($link, $sqlpatient);
-    $rspatient = mysqli_fetch_array($qsqlpatient);
-		// Attempt select query execution
-		//$sql = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
-    $sql = "SELECT * FROM guestbook WHERE uid='$rspatient[uid]' ";
-			if($result = mysqli_query($link, $sql)){
-				if(mysqli_num_rows($result) > 0){
-					echo "<table>";
-					echo "<tr>";
-          echo "<th>Guest no</th>";
-					echo "<th>First name</th>";
-					echo "<th>Surname</th>";
-					echo "<th>Date of Birth</th>";
-          echo "<th>Email</th>";
-          echo "<th>Description</th>";
-          echo "<th>Assigned_to</th>";
-          echo "<th>Department</th>";
-          echo "<th>Self</th>";
-          echo "<th>Guest Firstname</th>";
-          echo "<th>Guest Surname</th>";
-          echo "<th>Guest Date of Birth</th>";
-          echo "<th>Guest Email</th>";
-					echo "</tr>";
-				while($row = mysqli_fetch_array($result)){
-					echo "<tr>";
-          echo "<td>" . $row['guestno'] . "</td>";
-					echo "<td>" . $row['firstname'] . "</td>";
-					echo "<td>" . $row['lastname'] . "</td>";
-					echo "<td>" . $row['dob'] . "</td>";
-					echo "<td>" . $row['email'] . "</td>";
-          echo "<td>" . $row['description'] . "</td>";
-          echo "<td>" . $row['assigned_to'] . "</td>";
-          echo "<td>" . $row['department'] . "</td>";
-          echo "<td>" . $row['self'] . "</td>";
-          echo "<td>" . $row['gfname'] . "</td>";
-          echo "<td>" . $row['glname'] . "</td>";
-          echo "<td>" . $row['gdob'] . "</td>";
-          echo "<td>" . $row['gemail'] . "</td>";
-          echo "<td>" . $row['gdescrip'] . "</td>";
-          echo "<td>" . "<button class='btn btn-danger' data-bs-target='#exampleModalToggle' data-bs-toggle='modal' data-bs-dismiss='modal'>Cancel</button>" . "</td>";
-          //COULD HAVE PHP IN A FUNCTION TO DROP TABLE ONCE CLICKED
-					echo "</tr>";
-					}
-				echo "</table>";
-				// Free result set
-			mysqli_free_result($result);
-			} else{
-				echo "No records matching your query were found.";
-			}
-		} else{
-		echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-	}
- 
-	// Close connection
-	mysqli_close($link);
-?>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="modal fade" id="bmi" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
@@ -1286,17 +1147,6 @@ if (isset($_GET["error"]))
     </div>
   </div>
 </div>
-<!--https://www.youtube.com/watch?v=Cc3K2jDdKTo-->
-<script>
-  $(document).ready(function()
-  {
-    $('#overview').on('mouseover', function()
-    {
-      $('#overview').fadeout(200);
-    });
-  });
-
-</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

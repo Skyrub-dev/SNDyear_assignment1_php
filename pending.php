@@ -1,6 +1,6 @@
 <?php
   session_start();
-  //Main doctor page
+  //View patient pending appointments
 ?>
 
 <?php include ("includes/connect.inc.php");
@@ -8,31 +8,19 @@ $sql = "SELECT * FROM guestbook";
 $query_run = mysqli_query($connection, $sql);
 ?>
 <html>
-<?php
-          if (isset($_SESSION["docusername"]))
-          {
-            /*Grabs the username of the user and displays it on the site*/
-            echo "<li><p>You are signed in as: " . $_SESSION["docusername"] . "</p></li>";
-            echo "<li> <a href='includes/logout.inc.php'>Logout</a></li>";
-          }
-          else
-          {
-            header("location: index.php");
-            exit();
-          }
-        ?>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-  <title>Doctor</title>
+  <title>Pending appointments</title>
 </head>
 <body style="background-color:#292b2c;">
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
     <div class="container">
-      <a href="#" class="navbar-brand">Doctors Surgery</a>
+      <a href="index.php" class="navbar-brand">Doctors Surgery</a>
 
       <button 
       class="navbar-toggler" 
@@ -46,7 +34,20 @@ $query_run = mysqli_query($connection, $sql);
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            
+          <?php
+          if (isset($_SESSION["username"]))
+          {
+            /*Grabs the username of the user and displays it on the site*/
+            //echo "<li><p>You are signed in as: " . $_SESSION["username"] . "</p></li>";
+            echo "&nbsp;&nbsp;<a class='btn btn-primary' href='index.php' role='button'>Home</a>";
+            echo "&nbsp;&nbsp;<a class='btn btn-danger' href='includes/logout.inc.php' role='button'>Logout</a>";
+          }
+          else
+          {
+            header("location: index.php");
+            exit();
+          }
+        ?>
           </li>
           <li class="nav-item">
             
@@ -62,11 +63,11 @@ $query_run = mysqli_query($connection, $sql);
     <div class="container">
       <div class="d-sm-flex align-items-center justify-content-between">
         <div>
-          <h1>Welcome doctor
+          <h1>Pending appointments:
           </span></h1>
 
           <table>
-        <tr>
+      <tr>
           <th>guestno</th>
           <th>firstname</th>
           <th>Surname</th>
@@ -83,6 +84,14 @@ $query_run = mysqli_query($connection, $sql);
           <th>Guest decription</th>
           <th>User account ID</th>
         </tr>
+        
+        <?php include ("includes/connect.inc.php");
+$sqlpatient = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
+$qsqlpatient = mysqli_query($connection, $sqlpatient);
+$rspatient = mysqli_fetch_array($qsqlpatient);
+$sql = "SELECT * FROM guestbook WHERE uid='$rspatient[uid]' ";
+$query_run = mysqli_query($connection, $sql);
+?>
         <?php 
           while($row = mysqli_fetch_array($query_run))
           {
@@ -104,13 +113,15 @@ $query_run = mysqli_query($connection, $sql);
           <td><?php echo $row['gemail'];?></td>
           <td><?php echo $row['gdescrip'];?></td>
           <td><?php echo $row['uid'];?></td>
-          <td> <a href='updatefield.php?guestno=<?php echo $row['guestno'];?>'>Assign</a>
-          <td> <a href='clearfield.php?guestno=<?php echo $row['guestno'];?>'>Clear</a>
+          <td> <a href='deleteappoint.php?guestno=<?php echo $row['guestno'];?>'>Cancel</a>
         </tr>
         <?php
           }
           ?>
-      </table>
+    <b>Need to update your information? for security purposes and verification call us at: 0774878734</b>
+    
+    
+    </table>
           
 
         </div>

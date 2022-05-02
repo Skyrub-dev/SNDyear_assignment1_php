@@ -1,10 +1,15 @@
 <?php
-
-//Used when someone is booking for someone else - probably needs a login varient too
+session_start();
+//Used when someone is booking for someone else
 
 if (isset($_POST["submit"])) {
-    
+    require_once 'connect.inc.php';
+    require_once 'functions.inc.php';
     /*Initialising global variables*/
+    $sqlpatient = "SELECT * FROM login WHERE username='$_SESSION[username]' ";
+    $qsqlpatient = mysqli_query($connection, $sqlpatient);
+    $rspatient = mysqli_fetch_array($qsqlpatient);
+
     $firstname = $_POST["fname"];
     $lastname = $_POST["lname"];
     $dob = $_POST["dob"];
@@ -17,20 +22,9 @@ if (isset($_POST["submit"])) {
     $gdob = $_POST["gdob"];
     $gemail = $_POST["gemail"];
     $gdescrip = $_POST["gdescrip"];
-
+    $id = $rspatient["uid"];
     
-
-    require_once 'connect.inc.php';
-    require_once 'functions.inc.php';
-
-
-    /*ERROR HANDLERS*/
-    
-    
-
-    /*Initialises the 'createuser' function, passes the $connection, $username and $pass
-    variables to the function */
-    loggedbook($connection, $firstname, $lastname, $dob, $email, $desc, $department, $gfname, $glname, $gdob, $gemail, $gdescrip);
+    loggedbook($connection, $firstname, $lastname, $dob, $email, $desc, $department, $gfname, $glname, $gdob, $gemail, $gdescrip, $id);
 
 }
 

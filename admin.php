@@ -1,6 +1,4 @@
-<!--https://www.youtube.com/watch?v=4sosXZsdy-s-->
-
-<!--Initial design, use git - initialised at: https://github.com/Skyrub-dev/designs-->
+<!--admin login-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,9 +51,6 @@
             <br>
             <br>
             <input type="password" name="pass" placeholder="Password...">
-            <br>
-            <br>
-            <input type="password" name="passcode" placeholder="Passcode...">
             <br>
             <br>
             <button type="submit" name="submit">login</button>
